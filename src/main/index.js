@@ -48,7 +48,7 @@ function createWindow() {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   } */
   
-  mainWindow.loadURL('https://dev.clinicaespazuero.com/his')
+  mainWindow.loadURL('https://sigmalite.getsigmacare.com/')
 }
 
 // This method will be called when Electron has finished
