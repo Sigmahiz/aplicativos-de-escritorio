@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Electron</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
+    />
+
+    <link href="./assets/main.css" type="text/css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="app">
+      <img alt="logo" class="logo" src="./assets/sigma-lite-logo.png" style="width:300px;height:auto;"/>
+
+      <div class="actions">
+        <div class="action">
+          <a href="https://sigmalite.getsigmacare.com/" rel="noreferrer">Iniciar</a>
+        </div>
+      </div>
+
+    </div>
+
+    <script type="module" src="./src/renderer.js"></script>
+  </body>
+</html>
