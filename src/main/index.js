@@ -1,6 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
-import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import path, { join } from 'path'
+import { electronApp, optimizer } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
 function createWindow() {
@@ -14,7 +14,8 @@ function createWindow() {
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
-    }
+    },
+    icon: path.join(__dirname, '../../resources/icon.png')
   })
 
   mainWindow.on('ready-to-show', () => {
@@ -30,7 +31,8 @@ function createWindow() {
       webPreferences: {
         preload: join(__dirname, '../preload/index.js'),
         sandbox: false
-      }
+      },
+      icon: path.join(__dirname, '../../resources/icon.png')
     })
 
     childWindow.loadURL(details.url)
@@ -47,7 +49,7 @@ function createWindow() {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   } */
-  
+
   mainWindow.loadURL('https://sigmalite.getsigmacare.com/')
 }
 
