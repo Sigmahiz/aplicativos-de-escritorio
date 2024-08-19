@@ -12,6 +12,7 @@
     }
   },
   "scripts": {
+    "prod": "node index",
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
     "start": "electron-vite preview",
@@ -26,7 +27,10 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
-    "electron-updater": "^6.1.7"
+    "colors": "^1.4.0",
+    "electron-updater": "^6.1.7",
+    "inquirer": "^8.0.0",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config": "^1.0.2",

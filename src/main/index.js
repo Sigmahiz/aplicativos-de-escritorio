@@ -50,7 +50,7 @@ function createWindow() {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   } */
 
-  mainWindow.loadURL('https://sigmalite.getsigmacare.com/')
+  mainWindow.loadURL(import.meta.env.VITE_URL)
 }
 
 // This method will be called when Electron has finished
