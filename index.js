@@ -35,17 +35,32 @@ const questions = [
       }
       return true
     }
+  },
+  {
+    type: 'input',
+    name: 'title',
+    message: 'Ingresa el nombre del aplicativo: '.cyan,
+    validate(value) {
+      if (value.length === 0) {
+        return 'Please insert a value'
+      }
+      return true
+    }
   }
 ]
 
 const start = async () => {
   console.clear()
   console.log('==========================='.green)
-  console.log('      SIGMA LITE CLI      '.white)
+  console.log('      SIGMA BUILD CLI      '.white)
   console.log('===========================\n'.green)
 
-  const { option, desc } = await inquirer.prompt(questions)
-  fs.writeFileSync(path.join(__dirname, '.env'), `VITE_URL=${desc}`)
+  const { option, desc, title } = await inquirer.prompt(questions)
+  const envs = `
+      VITE_URL=${desc}
+      VITE_TITLE=${title}
+  `
+  fs.writeFileSync(path.join(__dirname, '.env'), envs)
   await runBuild(option)
 }
 
@@ -69,7 +84,7 @@ async function runBuild(option) {
     console.clear()
     console.log(stdout)
     console.log('======================================'.green)
-    console.log('  SIGMA LITE COMPILADA CORRECTAMENTE  '.white)
+    console.log('  SIGMA BUILD COMPILADA CORRECTAMENTE  '.white)
     console.log('======================================'.green)
   } catch (e) {
     console.error(e) // should contain code (exit code) and signal (that caused the termination).

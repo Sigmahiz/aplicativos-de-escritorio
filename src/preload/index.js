@@ -1,4 +1,4 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
@@ -11,6 +11,21 @@ if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI)
     contextBridge.exposeInMainWorld('api', api)
+    contextBridge.exposeInMainWorld('ipcRenderer', {
+      send: (channel, data) => {
+        // Lista blanca de canales permitidos
+        const validChannels = ['custom-alert']
+        if (validChannels.includes(channel)) {
+          ipcRenderer.send(channel, data)
+        }
+      },
+      on: (channel, func) => {
+        const validChannels = [] // No exponemos canales de recepción por ahora
+        if (validChannels.includes(channel)) {
+          ipcRenderer.on(channel, (event, ...args) => func(...args))
+        }
+      }
+    })
   } catch (error) {
     console.error(error)
   }
