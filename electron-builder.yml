@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: sigmalite
+productName: sigma
 directories:
   buildResources: build
 files:
@@ -11,7 +11,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: sigmlaite
+  executableName: sigma
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
@@ -30,7 +30,7 @@ dmg:
 linux:
   target:
     - AppImage
-    
+
   maintainer: electronjs.org
   category: Utility
 appImage:
